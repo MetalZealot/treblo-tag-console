@@ -210,8 +210,8 @@ body.dragging,body.dragging *{cursor:grabbing!important;user-select:none;-webkit
 .toast{position:fixed;left:50%;bottom:calc(var(--tray-h,68px) + 28px + env(safe-area-inset-bottom));z-index:40;display:flex;align-items:center;gap:var(--s3);
   width:max-content;max-width:calc(100% - 32px);padding:var(--s2) var(--s2) var(--s2) var(--s4);background:var(--surface-2);border:1px solid var(--line-2);
   border-radius:var(--r);box-shadow:var(--shadow);font-size:14px;
-  opacity:0;visibility:hidden;transform:translate(-50%,8px);transition:opacity .18s,transform .18s var(--ease),visibility 0s .18s}
-.toast.show{opacity:1;visibility:visible;transform:translate(-50%,0);transition:opacity .18s,transform .18s var(--ease),visibility 0s}
+  opacity:0;visibility:hidden;transform:translate(-50%,8px);transition:opacity .18s,transform .18s var(--ease),bottom .25s var(--ease),visibility 0s .18s}
+.toast.show{opacity:1;visibility:visible;transform:translate(-50%,0);transition:opacity .18s,transform .18s var(--ease),bottom .25s var(--ease),visibility 0s}
 .toast button{flex:0 0 auto;color:var(--accent-text);font-weight:600;font-size:14px;padding:var(--s2) var(--s3);border-radius:var(--pill)}
 .toast button:hover{background:var(--accent-soft)}
 
@@ -624,9 +624,13 @@ let toastT;
 function toast(msg,action,fn){const t=$('toast'),b=$('toastAct');
   $('toastMsg').textContent=msg;b.hidden=!action;
   if(action){b.textContent=action;b.onclick=()=>{hideToast();fn();};}
-  t.style.setProperty('--tray-h',document.querySelector('.tray').offsetHeight+'px');
   t.classList.add('show');armToast();}
-function armToast(){clearTimeout(toastT);toastT=setTimeout(hideToast,$('toastAct').hidden?4000:7000);}
+function armToast(){clearTimeout(toastT);toastT=setTimeout(hideToast,$('toastAct').hidden?4000:5000);}
+/* the toast sits just above the tray, following it as the tray opens and closes */
+const trayEl=document.querySelector('.tray');
+new ResizeObserver(()=>document.documentElement.style.setProperty('--tray-h',trayEl.offsetHeight+'px')).observe(trayEl);
+/* tapping anywhere else means the user has moved on, so the toast goes */
+addEventListener('pointerdown',e=>{if($('toast').classList.contains('show')&&!$('toast').contains(e.target))hideToast();},true);
 function hideToast(){clearTimeout(toastT);const t=$('toast');if(t.contains(document.activeElement))focusTray();t.classList.remove('show');}
 $('toast').addEventListener('pointerenter',()=>clearTimeout(toastT));
 $('toast').addEventListener('pointerleave',armToast);
