@@ -2,7 +2,7 @@
 
 ## Bird's-eye view
 
-A single static page. Treblo's style tags are embedded in it as JSON. People browse and filter the tags, collect two lists ("use" and "avoid"), and copy each list as comma-separated text. The page has no backend, no build step, and no network calls apart from Google Fonts. The two lists are saved in the browser's `localStorage`, so they survive a refresh; nothing leaves the device.
+A single static page. Treblo's style tags are embedded in it as JSON. People browse and filter the tags, collect two lists ("use" and "avoid"), arrange each list in the order they want, and copy each list as comma-separated text. The page has no backend, no build step, and no network calls apart from Google Fonts. The two lists are saved in the browser's `localStorage`, so they survive a refresh; nothing leaves the device.
 
 ## Quality goals
 
@@ -24,6 +24,7 @@ The data blob holds `cats`, `fams`, `subs`, `regs` and `tiers` (lookup tables), 
 ## Invariants
 
 - **A tag is in at most one list, "use" or "avoid".** If a tag were in both, the two copied lists would contradict each other.
+- **A list's order is the user's order.** Tags stay in the order they were picked until the user moves them (drag, the move arrows, the arrow keys) or taps "Sort by popularity". The chips, the copied text and the saved list all use that one order. If any of them re-sorted on its own, a list someone arranged would be copied or reloaded in a different order without them noticing.
 - **Only tags with a rank are shown, in Browse and in Suggested.** The 165 unranked tags are outside the 4,160 Treblo lists, and many have broken text (`forr\xf3`). Showing them would let people copy tags Treblo doesn't know.
 - **Saved lists hold tag names, not row indexes, and only ranked names are restored.** Indexes shift if the data is refreshed, which would silently swap people's tags.
 - **There is one filter panel.** On phones the same element moves into a `<dialog>` and back, and Back closes it. A second copy would let the two drift out of sync.
