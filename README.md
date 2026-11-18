@@ -1,12 +1,13 @@
-# Sonauto Tag Console
+# Tag Console
 
-A single-page tag console for building Sonauto style prompts from the Treblo v3 style tags. Everything lives in `index.html`; there is no build step.
+An unofficial browser for the 4,160 Treblo v3 style tags (Treblo was called Sonauto until June 2026). Filter by category, genre family, region and popularity tier, then build a tag list and copy it into Treblo. You can also mark tags to avoid and copy those as a separate list, for Treblo v3's negative tags.
 
-## Use it
+**Live:** https://metalzealot.github.io/sonauto-tag-console/
 
-- Open `index.html` in a browser, or
-- Turn on GitHub Pages (Settings → Pages → Deploy from branch → `main`, `/ (root)`) and open the Pages URL.
+Not affiliated with Treblo or Sonauto, Inc.
 
-## Known limit
+## Run it
 
-The **Auto-tag** button calls Claude directly from the page. That only works when the page runs inside claude.ai, which supplies the sign-in. Hosted anywhere else (GitHub Pages, a local file), Auto-tag will fail; the rest of the console works.
+It's one static page with no build step. Open `index.html` in a browser, or serve the folder.
+
+GitHub Pages serves the `main` branch root, so every push to `main` updates the live page.
