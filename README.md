@@ -2,7 +2,7 @@
 
 An unofficial browser for the 4,160 Treblo v3 style tags (Treblo was called Sonauto until June 2026). Filter by category, genre family, region and popularity tier, then build a tag list and copy it into Treblo. You can also mark tags to avoid and copy those as a separate list, for Treblo v3's negative tags.
 
-**Live:** https://metalzealot.github.io/sonauto-tag-console/
+**Live:** https://metalzealot.github.io/treblo-tag-console/
 
 Not affiliated with Treblo or Sonauto, Inc.
 
