@@ -265,6 +265,8 @@ dialog.sheet:focus-visible{outline:none}
   .chiplabel{flex-basis:100%;margin:var(--s2) 0 0;padding:0;border:none}
   .tray .acts .clear{display:none}
   body.basket-open .tray .acts .clear{display:inline-flex}
+  body:not(.basket-open) .tray #copyAvoid{display:none}
+  body.basket-open .tray .acts{order:4;flex:1 1 100%;justify-content:flex-end}
   .btn{padding:0 var(--s5);font-size:15px}
 }
 @media (max-width:380px){.title h1{font-size:32px}.title .v{display:none}.tabs{gap:var(--s5)}.tabs button{font-size:21px}}

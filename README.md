@@ -6,6 +6,13 @@ An unofficial browser for the 4,160 Treblo v3 style tags (Treblo was called Sona
 
 Not affiliated with Treblo or Sonauto, Inc.
 
+![Tag Console on a desktop: filters, the tag list, suggested tags and the prompt bar](screenshots/desktop.png)
+
+<p>
+  <img src="screenshots/phone-browse.png" width="300" alt="Tag Console on a phone, searching for dream">
+  <img src="screenshots/phone-picks.png" width="300" alt="Tag Console on a phone, suggested tags with the picked list open">
+</p>
+
 ## Run it
 
 It's one static page with no build step. Open `index.html` in a browser, or serve the folder.

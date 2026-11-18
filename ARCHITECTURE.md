@@ -17,6 +17,7 @@ A single static page. Treblo's style tags are embedded in it as JSON. People bro
 |---|---|
 | `index.html` | Styles, markup, the tag data (`<script type="application/json" id="data">`) and the app script, in that order |
 | `favicon.svg`, `og.png` | The tab icon and the image shown when the link is shared |
+| `screenshots/` | The README images (desktop at 1280×800, phone at 390×844) |
 
 The data blob holds `cats`, `fams`, `subs`, `regs` and `tiers` (lookup tables), `tags` (rows of `[name, rank, tier, cat, fam, sub, reg]`, where rank is `null` for tags that are hidden from browsing) and `rel` (per tag, related tag indexes, strongest first). The Suggested pane uses `rel`.
 
